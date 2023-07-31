@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FAQ</title>
+    <!--=============== FONT AWESOME ===============-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+
+
+    <style type="text/css">
+        /*=============== GOOGLE FONTS ===============*/
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+        :root {
+            --accent-color: #0191DE;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #eee;
+            color: #444;
+            height: 100%;
+            margin: 0;
+        }
+
+        h1 {
+            margin: 50px 0 30px;
+            text-align: center;
+            font-family: Helvetica;
+            color: var(--accent-color);
+        }
+
+        .faq-container {
+            max-width: 950px;
+            margin: 0 auto;
+            border-radius: 10px;
+            background-color: #fff;
+            overflow: hidden;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .faq {
+            box-sizing: border-box;
+            background: transparent;
+            padding: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .faq:not(:first-child) {
+            border-top: 1px solid #e6e6e6;
+            width: 100%;
+        }
+
+        .faq-title {
+            margin: 0 75px 0 0;
+            font-size: 15px;
+        }
+
+        .faq-title i {
+            margin-left: 10px; 
+            font-size: 25px;
+
+        }
+
+
+        .faq-text {
+            margin: 30px 0 0;
+            display: none;
+            line-height: 1.5rem;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        .faq.active {
+            background-color: #f8f8f8;
+            box-shadow: inset 4px 0px 0px 0px var(--accent-color);
+        }
+
+        .faq.active .faq-title {
+            color: var(--accent-color);
+        }
+
+        .faq.active .faq-text {
+            display: block;
+        }
+
+        .faq-toggle {
+            background-color: transparent;
+            border: 1px solid #e6e6e6;
+            color: inherit;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            padding-top: 3px;
+            padding-left: 5px;
+            position: absolute;
+            top: 16%;
+            transform: translateY(-50%);
+            right: 10px;
+            height: 30px;
+            width: 30px;
+            transition: 0.3s ease;
+        }
+
+        .faq-toggle:focus {
+            outline: none;
+        }
+
+        .faq.active .faq-toggle {
+            transform: rotate(180deg);
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: #fff;
+        }
+
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            padding: 10px;
+            border-radius: 4px;
+            width: 300px;
+            border: 1px solid #ccc;
+        }
+
+        .highlight {
+            background-color: yellow;
+        }
+
+        .category {
+            background-color: #fff;
+            padding: 20px 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e6e6e6;
+            padding-left: 15px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .category h3.faq-title {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .catText {
+            color: #0191DE;
+            text-align: center;
+        }
+
+        .no-results-message {
+              display: none;
+              text-align: center;
+              margin: auto;
+              padding: 10px;
+              color: black;
+/*              background-color: #fff;*/
+              min-height: 50px;
+              max-width: 500px; 
+            }
+
+            a{
+                color: #0191DE;
+                text-decoration: none;
+                font-size: 14px;
+            }
+
+         .hidden {
+            display: none;
+        }
+
+        .show-more-btn {
+            display: block;
+            margin: 20px auto;
+            border: none;
+            border-radius: 4px;
+            background-color: var(--accent-color);
+            color: white;
+            font-size: 16px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .faq-container {
+                grid-template-columns: 1fr;
+            }
+
+            .category {
+                margin-bottom: 0;
+            }
+
+            .faq-toggle {
+                top: 25%;
+                transform: translateY(-50%);
+                right: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<h1>Frequently Asked Questions</h1>
+
+<div class="search-container">
+    <input type="text" class="search-input" id="searchInput" placeholder="Search FAQ">
+</div>
+
+<div class="faq-container">
+    
+    <div class="category">
+        <h3 class="faq-title catText">Shipping<i class="fas fa-shipping-fast"></i></h3>
+        <div class="faq">
+            <h3 class="faq-title">
+                How long will it take to ship my units?
+            </h3>
+            <p class="faq-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, nemo.</p>
+            <button class="faq-toggle">
+                <i class="fas fa-angle-down"></i>
+            </button>
+        </div>
+
+          <div class="faq">
+            <h3 class="faq-title">
+                What is in-land shipping?
+            </h3>
+            <p class="faq-text">In-land shipping refers to the part of shipment from site to delivery port and from arrival port to your destination. This is where all the customs clearance and declarations will be handled accordingly.</p>
+            <button class="faq-toggle">
+                <i class="fas fa-angle-down"></i>
+            </button>
+        </div>
+
+        <div class="faq">
+            <h3 class="faq-title">
+                Does my purchase cover shipping?
+            </h3>
+            <p class="faq-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, nemo.</p>
+            <button class="faq-toggle">
+                <i class="fas fa-angle-down"></i>
+            </button>
+        </div>
+
+
+        <div class="faq">
+            <h3 class="faq-title">
+                If I decide to have Nestron cover my delivery, who will be handling my shipment?
+            </h3>
+            <p class="faq-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, nemo.</p>
+            <button class="faq-toggle">
+                <i class="fas fa-angle-down"></i>
+            </button>
+        </div>
+        
+
+        <div class="faq hidden">
+            <h3 class="faq-title">
+                How can I declare my goods for customs clearance?
+            </h3>
+            <p class="faq-text">The assigned </p>
+            <button class="faq-toggle">
+                <i class="fas fa-angle-down"></i>
+            </button>
+        </div>
+
+         <div class="faq hidden">
+            <h3 class="faq-title">
+                How can I declare my goods for customs clearance?
+            </h3>
+            <p class="faq-text">The assigned </p>
+            <button class="faq-toggle">
+                <i class="fas fa-angle-down"></i>
+            </button>
+        </div>
+
+        <div class="faq hidden">
+            <h3 class="faq-title">
+                Who will be responsible for damages done during shipping?
+            </h3>
+            <p class="faq-text">If there are damages done during shipment</p>
+            <button class="faq-toggle">
+                <i class="fas fa-angle-down"></i>
+            </button>
+        </div>
+
+        <div class="faq hidden">
+            <h3 class="faq-title">
+                Should I prepare my own craning service upon arrival?
+            </h3>
+            <p class="faq-text">Yes, you are expected to prepare craning and contractor</p>
+            <button class="faq-toggle">
+                <i class="fas fa-angle-down"></i>
+            </button>
+        </div>
+
+        <button class="show-more-btn">Show More</button>
+    </div>
+
+    <!-- category 2 -->
+
+    <div class="category">
+        <h3 class="faq-title catText">Payments</h3>
+        <div class="faq">
+            <h3 class="faq-title">
+                What are the payment terms for Nestron?
+            </h3>
+            <p class="faq-text">Nestron payment terms are made 100% upon confirmation of order.</p>
+            <button class="faq-toggle">
+                <i class="fas fa-angle-down"></i>
+            </button>
+        </div>
+
+        <div class="faq">
+            <h3 class="faq-title">
+                What are the payment terms for Nestron?
+            </h3>
+            <p class="faq-text">Nestron payment terms are made 100% upon confirmation of order.</p>
+            <button class="faq-toggle">
+                <i class="fas fa-angle-down"></i>
+            </button>
+        </div>
+
+        <div class="faq">
+            <h3 class="faq-title">
+                What are the payment terms for Nestron?
+            </h3>
+            <p class="faq-text">Nestron payment terms are made 100% upon confirmation of order.</p>
+            <button class="faq-toggle">
+                <i class="fas fa-angle-down"></i>
+            </button>
+        </div>
+
+        <div class="faq">
+            <h3 class="faq-title">
+                What are the payment terms for Nestron?
+            </h3>
+            <p class="faq-text">Nestron payment terms are made 100% upon confirmation of order.</p>
+            <button class="faq-toggle">
+                <i class="fas fa-angle-down"></i>
+            </button>
+        </div>
+
+        <div class="faq">
+            <h3 class="faq-title">
+                What are the payment terms for Nestron?
+            </h3>
+            <p class="faq-text">Nestron payment terms are made 100% upon confirmation of order.</p>
+            <button class="faq-toggle">
+                <i class="fas fa-angle-down"></i>
+            </button>
+        </div>
+
+        <div class="faq hidden">
+            <h3 class="faq-title">
+                Is there any extra storage charges from Nestron if I cannot ship my units immediately?
+            </h3>
+            <p class="faq-text">Nestron can</p>
+            <button class="faq-toggle">
+                <i class="fas fa-angle-down"></i>
+            </button>
+        </div>
+
+        <button class="show-more-btn">Show More</button>
+    </div>
+
+    <!-- category 3 -->
+    <div class="category">
+        <h3 class="faq-title catText">Product</h3>
+        <div class="faq">
+            <h3 class="faq-title">
+                Can we change the color of our products? If yes, can more color options be provided?
+            </h3>
+            <p class="faq-text">Technically yes, Nestron</p>
+            <button class="faq-toggle">
+                <i class="fas fa-angle-down"></i>
+            </button>
+        </div>
+
+        <div class="faq">
+            <h3 class="faq-title">
+                Can we change the color of our products? If yes, can more color options be provided?
+            </h3>
+            <p class="faq-text">Technically yes, Nestron</p>
+            <button class="faq-toggle">
+                <i class="fas fa-angle-down"></i>
+            </button>
+        </div>
+
+        <div class="faq">
+            <h3 class="faq-title">
+                Can we change the color of our products? If yes, can more color options be provided?
+            </h3>
+            <p class="faq-text">Technically yes, Nestron</p>
+            <button class="faq-toggle">
+                <i class="fas fa-angle-down"></i>
+            </button>
+        </div>
+
+        <div class="faq">
+            <h3 class="faq-title">
+                Can we deliver non-furnished units?
+            </h3>
+            <p class="faq-text">This customization is not recommended especially</p>
+            <button class="faq-toggle">
+                <i class="fas fa-angle-down"></i>
+            </button>
+        </div>
+
+        <div class="faq hidden">
+            <h3 class="faq-title">
+                How is the septic tank waste processed?
+            </h3>
+            <p class="faq-text">You can refer to how our connectors work.</p>
+            <button class="faq-toggle">
+                <i class="fas fa-angle-down"></i>
+            </button>
+        </div>
+
+        <div class="faq hidden">
+            <h3 class="faq-title">
+                Is a composting toilet available?
+            </h3>
+            <p class="faq-text">Composting toilet add-on option is available. Kindly contact our sales assistance for this add-on option.</p>
+            <button class="faq-toggle">
+                <i class="fas fa-angle-down"></i>
+            </button>
+        </div>
+
+        <div class="faq hidden">
+            <h3 class="faq-title">
+                How much does customization cost?
+            </h3>
+            <p class="faq-text">For any heavy customization</p>
+            <button class="faq-toggle">
+                <i class="fas fa-angle-down"></i>
+            </button>
+        </div>
+
+        <button class="show-more-btn">Show More</button>
+    </div>
+</div>
+
+<p class="no-results-message"></p>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  const buttons = document.querySelectorAll(".faq-toggle");
+  const showMoreButtons = document.querySelectorAll(".show-more-btn");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () =>
+      button.parentElement.classList.toggle("active")
+    );
+  });
+
+  showMoreButtons.forEach((showMoreButton) => {
+    showMoreButton.addEventListener("click", function () {
+      const faqContainer = this.parentElement;
+      const hiddenFaqs = faqContainer.querySelectorAll(".faq.hidden");
+
+      hiddenFaqs.forEach((hiddenFaq, index) => {
+        if (index < 10) {
+          hiddenFaq.classList.remove("hidden");
+        }
+      });
+
+      if (faqContainer.querySelectorAll(".faq.hidden").length === 0) {
+        this.style.display = "none";
+      }
+    });
+  });
+
+  $("#searchInput").on("keyup", function () {
+    var value = $(this).val().toLowerCase();
+    var faqs = $(".faq");
+    var categories = $(".category");
+    var noResultsMessage = $(".no-results-message");
+
+    if (value.length === 0) {
+      faqs.show();
+      categories.show();
+      noResultsMessage.hide(); // Hide the "No Results Found" message
+    } else {
+      faqs.hide();
+      categories.hide();
+
+      var visibleFaqs = faqs.filter(function () {
+        var faqTitle = $(this).find(".faq-title");
+        var faqText = $(this).find(".faq-text");
+        var faqTitleText = faqTitle.text().toLowerCase();
+        var faqTextText = faqText.text().toLowerCase();
+
+        if (
+          faqTitleText.includes(value) ||
+          faqTextText.includes(value)
+        ) {
+          faqTitle.html(faqTitleText.replace(new RegExp(value, "gi"), function (match) {
+            return "<span class='highlight'>" + match + "</span>";
+          }));
+
+          faqText.html(faqTextText.replace(new RegExp(value, "gi"), function (match) {
+            return "<span class='highlight'>" + match + "</span>";
+          }));
+
+          return true;
+        }
+
+        return false;
+      });
+
+      if (visibleFaqs.length === 0) {
+        noResultsMessage.text("No Results Found");
+        noResultsMessage.show(); // Show the "No Results Found" message
+      } else {
+        visibleFaqs.show();
+        visibleFaqs.closest(".category").show();
+        noResultsMessage.hide(); // Hide the "No Results Found" message
+      }
+    }
+  });
+});
+
+</script>
+</body>
+</html>
